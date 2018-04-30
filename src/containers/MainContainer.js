@@ -13,9 +13,13 @@ class MainContainer extends Component {
 		return <div>
 			{cards.map(el => <div 
 				key={el.id}
-				onClick={el.active ? toggleCardClick.bind(null, el.id) : null}
+				onClick={el.active ? toggleCardClick.bind(null, el) : null}
 				className="card"
-				style={{background: el.clicked ? el.color : "#ddd"}}/>)}			
+				style={{background: el.active 
+					? (el.clicked 
+							? el.color 
+							: "#ddd") 
+					: "#000"}}/>)}			
 		</div>;
 	}
 }
