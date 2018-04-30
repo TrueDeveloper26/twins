@@ -3,9 +3,10 @@ import makeCopies from '../utils/makeCopies';
 import * as types from "../consts/types";
 
 const initialState = {
-	cards: makeCopies(["red", "green", "blue", "white"], 4)
-		.map(el => ({
-			id: uuidV1(),
+	cards: makeCopies(["red", "green", "blue", "yellow"], 4)
+		.map((el, i) => ({
+			// id: uuidV1(),
+			id: i + 1,
 			color: el,
 			active: true,
 			clicked: false
@@ -14,6 +15,7 @@ const initialState = {
 };
 
 export default (state = initialState, { type, payload }) => {
+	// console.log(state.cards);
 	switch(type){
 		case types.TOGGLE_CARD_CLICK:{
 			const { activeCards, cards } = state;
@@ -32,6 +34,16 @@ export default (state = initialState, { type, payload }) => {
 						: el)
 				}
 			}else if(activeCards.length === 1){
+				if(activeCards[0].id === payload.id){
+					return {
+						...state,
+						activeCards: [],
+						cards: cards.map(el => el.id === payload.id ? {
+							...el, 
+							clicked: false
+						} : el)
+					}
+				}
 				console.log("2");
 				if(activeCards[0].color === payload.color){
 					return {
@@ -54,9 +66,19 @@ export default (state = initialState, { type, payload }) => {
 						...el,
 						clicked: true
 					} : el)
-
 				}
 			}else if(activeCards.length === 2){
+				if(activeCards.some(el => el.id === payload.id)){
+					return {
+						...state,
+						activeCards: activeCards
+							.filter(el => el.id !== payload.id),
+						cards: cards.map(el => el.id === payload.id ? {
+							...el,
+							clicked: false
+						} : el)
+					}
+				}
 				console.log("3");
 				return {
 					activeCards: [payload],

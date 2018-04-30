@@ -25,6 +25,9 @@ class MainContainer extends Component {
 }
 
 export default connect(
-	state => ({cards: state.game.cards}),
+	state => {
+		// console.log(state.game.activeCards);
+		return ({cards: state.game.cards})
+	},
 	dispatch => bindActionCreators(gameActions, dispatch)
 )(MainContainer);
