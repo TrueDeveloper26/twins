@@ -2,4 +2,12 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+	height: 100%;
+}
+
+.wrapper{
+	background: #333;
+	min-height: 100vh;
+	min-width: 100vw;
+	color: #eee;
 }
