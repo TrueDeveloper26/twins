@@ -1,16 +1,19 @@
 import uuidV1 from 'uuid/v1';
 import makeCopies from '../utils/makeCopies';
+import shuffleArray from '../utils/shuffleArray';
 import * as types from "../consts/types";
 
+
+
 const initialState = {
-	cards: makeCopies(["red", "green", "blue", "yellow"], 4)
-		.map((el, i) => ({
-			// id: uuidV1(),
-			id: i + 1,
-			color: el,
-			active: true,
-			clicked: false
-		})),
+	cards: shuffleArray(makeCopies(["red", "green", "blue", "yellow"], 16)
+			.map((el, i) => ({
+				// id: uuidV1(),
+				id: i + 1,
+				color: el,
+				active: true,
+				clicked: false
+			}))),
 	activeCards: []
 };
 
@@ -35,6 +38,7 @@ export default (state = initialState, { type, payload }) => {
 				}
 			}else if(activeCards.length === 1){
 				if(activeCards[0].id === payload.id){
+					console.log("2");
 					return {
 						...state,
 						activeCards: [],
@@ -44,8 +48,8 @@ export default (state = initialState, { type, payload }) => {
 						} : el)
 					}
 				}
-				console.log("2");
 				if(activeCards[0].color === payload.color){
+					console.log("3");
 					return {
 						...state,
 						activeCards: [],
@@ -59,6 +63,7 @@ export default (state = initialState, { type, payload }) => {
 								} : el)
 					}
 				}
+				console.log("4");
 				return {
 					...state,
 					activeCards: [...activeCards, payload],
@@ -69,17 +74,16 @@ export default (state = initialState, { type, payload }) => {
 				}
 			}else if(activeCards.length === 2){
 				if(activeCards.some(el => el.id === payload.id)){
+					console.log("5");
 					return {
 						...state,
-						activeCards: activeCards
-							.filter(el => el.id !== payload.id),
-						cards: cards.map(el => el.id === payload.id ? {
-							...el,
-							clicked: false
-						} : el)
+						activeCards: [],
+						cards: cards.map(el => 
+							activeCards.some(ell => ell.id === el.id)
+							? { ...el, clicked: false } : el)
 					}
 				}
-				console.log("3");
+				console.log("6");
 				return {
 					activeCards: [payload],
 					cards: cards.map(el => 
