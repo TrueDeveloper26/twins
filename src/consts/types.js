@@ -1,0 +1,2 @@
+export const TOGGLE_CARD_CLICK = "TOGGLE_CARD_CLICK";
+
