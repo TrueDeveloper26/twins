@@ -87,13 +87,19 @@ export default (state = initialState, { type, payload }) => {
 						}
 					}
 					console.log("6");
+
 					return {
+						...state,
 						activeCards: [payload],
-						cards: cards.map(el => 
-							el.id === payload.id 
-								? { ...el, clicked: true } 
-								: {...el, clicked: false }
-						)
+						cards: cards.map(el => {
+							// prevents unexpected rerendering of ALL elements
+							if(el.id === payload.id){
+								return { ...el, clicked: true } 
+							}else if (el.clicked){
+								return { ...el, clicked: false }
+							}
+							return el;
+						})
 					}
 				}
 			}
