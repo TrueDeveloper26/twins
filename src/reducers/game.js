@@ -19,6 +19,7 @@ const initialState = {
 
 export default (state = initialState, { type, payload }) => {
 	// console.log(state.cards);
+
 	switch(type){
 		case types.TOGGLE_CARD_CLICK:{
 			const { activeCards, cards } = state;

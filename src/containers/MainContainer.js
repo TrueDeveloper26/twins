@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import * as gameActions from "./../actions/gameActions";
+import Card from "../components/Card";
 
 //shuffle
 
@@ -10,16 +11,14 @@ import * as gameActions from "./../actions/gameActions";
 class MainContainer extends Component {
 	render(){
 		const { toggleCardClick, cards } = this.props;
+		
 		return <div>
-			{cards.map(el => <div 
-				key={el.id}
-				onClick={el.active ? toggleCardClick.bind(null, el) : null}
-				className="card"
-				style={{background: el.active 
-					? (el.clicked 
-							? el.color 
-							: "#ddd") 
-					: "#000"}}/>)}			
+			{cards.map(el => 
+				<Card
+					key={el.id}
+					el={el}
+					toggleCardClick={toggleCardClick}/>
+			)}
 		</div>;
 	}
 }
