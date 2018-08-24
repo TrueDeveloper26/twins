@@ -1,4 +1,4 @@
-import uuidV1 from 'uuid/v1';
+// import uuidV1 from 'uuid/v1';
 import makeCopies from '../utils/makeCopies';
 import shuffleArray from '../utils/shuffleArray';
 import * as types from "../consts/types";
@@ -6,7 +6,7 @@ import * as types from "../consts/types";
 
 
 const initialState = {
-	cards: shuffleArray(makeCopies(["red", "green", "blue", "yellow"], 16)
+	cards: shuffleArray(makeCopies(["red", "green", "blue", "yellow"], 8)
 			.map((el, i) => ({
 				// id: uuidV1(),
 				id: i + 1,
@@ -18,7 +18,7 @@ const initialState = {
 };
 
 export default (state = initialState, { type, payload }) => {
-	// console.log(state.cards);
+	// console.log(state.cards.length);
 
 	switch(type){
 		case types.TOGGLE_CARD_CLICK:{

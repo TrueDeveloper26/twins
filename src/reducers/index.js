@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
-import { reducer as formReducer } from 'redux-form';
+// import { routerReducer } from 'react-router-redux';
+// import { reducer as formReducer } from 'redux-form';
 import game from "./game";
 
 export default combineReducers({
-	router: routerReducer,
-	form: formReducer,
+	// router: routerReducer,
+	// form: formReducer,
 	game
 });
