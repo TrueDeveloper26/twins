@@ -5,6 +5,10 @@ body {
 	height: 100%;
 }
 
+#root{
+	overflow-x: hidden;
+}
+
 .wrapper{
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -16,6 +20,9 @@ body {
 	color: #eee;
 	text-align: center;
 	padding: 2em;
+}
+.cards-container{
+	margin: 0 auto;
 }
 .card{
 	width: 50px;
@@ -33,6 +40,10 @@ body {
 }
 .card--black{
 	background: #000;
+}
+.card--shadow:hover{
+  /*box-shadow: 0px 0px 49px 8px rgba(247,15,92,1);*/
+  /*box-shadow: 0px 0px 48px 3px rgba(255,0,0,1);*/
 }
 
 

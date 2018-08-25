@@ -1,32 +1,15 @@
 // import uuidV1 from 'uuid/v1';
-import makeCopies from '../utils/makeCopies';
-import shuffleArray from '../utils/shuffleArray';
+import { makeCardsArray, countContainerWidth } from '../utils/helpers';
 import * as types from "../consts/types";
+import { GAME_CONFIG, ICONS } from "../consts/config";
 
-const icons = [
-	"key",
-	"aid-kit",
-	"bug",
-	"rocket",
-	"lab",
-	"accessibility",
-	"power",
-	"flag",
-	"attachment",
-	"eye",
-	"star-full",
-	"heart-broken"
-];
 
 const initialState = {
-	cards: shuffleArray(makeCopies(icons, 8)
-			.map((el, i) => ({
-				// id: uuidV1(),
-				id: i + 1,
-				color: el,
-				active: true,
-				clicked: false
-			}))),
+	numberOfCards: ICONS.length,
+	containerWidth: countContainerWidth(
+		GAME_CONFIG.copiesNum
+	),
+	cards: makeCardsArray(ICONS, GAME_CONFIG.copiesNum),
 	activeCards: []
 };
 

@@ -12,7 +12,7 @@ class Card extends PureComponent {
 			className={active 
 				? (clicked 
 						? "card icon icon-" + color + " card--icon"
-						: "card") 
+						: "card card--shadow") 
 				: "card card--black"}
 		/>;
 	}

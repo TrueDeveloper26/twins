@@ -5,14 +5,15 @@ import { bindActionCreators } from 'redux';
 import * as gameActions from "./../actions/gameActions";
 import Card from "../components/Card";
 
-//shuffle
-
 
 class MainContainer extends Component {
 	render(){
-		const { toggleCardClick, cards } = this.props;
-		
-		return <div>
+		const { toggleCardClick, cards, containerWidth } = this.props;
+		const containerStyle = {width: `${containerWidth}px`};
+
+		return <div 
+			className="cards-container" 
+			style={containerStyle}>
 			{cards.map(el => 
 				<Card
 					key={el.id}
@@ -24,9 +25,9 @@ class MainContainer extends Component {
 }
 
 export default connect(
-	state => {
-		// console.log(state.game.activeCards);
-		return ({cards: state.game.cards})
-	},
+	state => ({ 
+		cards: state.game.cards,
+		containerWidth: state.game.containerWidth,
+	}),
 	dispatch => bindActionCreators(gameActions, dispatch)
 )(MainContainer);
