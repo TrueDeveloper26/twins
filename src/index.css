@@ -22,4 +22,81 @@ body {
 	height: 50px;
 	border-radius: 50%;
 	display: inline-block;
+	background: #ddd;
+	vertical-align: top;
 }
+.card--icon{
+	width: auto;
+	height: auto;
+	padding: 13px;
+	color: red;
+}
+.card--black{
+	background: #000;
+}
+
+
+/*ICOMOON*/
+@font-face {
+  font-family: 'icomoon';
+  src:
+    url('./fonts/icomoon.ttf?3aep3') format('truetype'),
+    url('./fonts/icomoon.woff?3aep3') format('woff'),
+    url('./fonts/icomoon.svg?3aep3#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-key:before {
+  content: "\e98d";
+}
+.icon-aid-kit:before {
+  content: "\e998";
+}
+.icon-bug:before {
+  content: "\e999";
+}
+.icon-rocket:before {
+  content: "\e9a5";
+}
+.icon-lab:before {
+  content: "\e9aa";
+}
+.icon-accessibility:before {
+  content: "\e9b2";
+}
+.icon-power:before {
+  content: "\e9b5";
+}
+.icon-flag:before {
+  content: "\e9cc";
+}
+.icon-attachment:before {
+  content: "\e9cd";
+}
+.icon-eye:before {
+  content: "\e9ce";
+}
+.icon-star-full:before {
+  content: "\e9d9";
+}
+.icon-heart-broken:before {
+  content: "\e9db";
+}
+/*ICOMOON*/
+

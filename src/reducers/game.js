@@ -3,10 +3,23 @@ import makeCopies from '../utils/makeCopies';
 import shuffleArray from '../utils/shuffleArray';
 import * as types from "../consts/types";
 
-
+const icons = [
+	"key",
+	"aid-kit",
+	"bug",
+	"rocket",
+	"lab",
+	"accessibility",
+	"power",
+	"flag",
+	"attachment",
+	"eye",
+	"star-full",
+	"heart-broken"
+];
 
 const initialState = {
-	cards: shuffleArray(makeCopies(["red", "green", "blue", "yellow"], 8)
+	cards: shuffleArray(makeCopies(icons, 8)
 			.map((el, i) => ({
 				// id: uuidV1(),
 				id: i + 1,
@@ -102,6 +115,8 @@ export default (state = initialState, { type, payload }) => {
 						})
 					}
 				}
+				default:
+					return state;
 			}
 		}
 		default:
